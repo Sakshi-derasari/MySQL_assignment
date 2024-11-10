@@ -1,0 +1,232 @@
+q1. what do you understand by database?
+
+Ans. A database is a structured collection of data or it is a organized collection of structured information that can be accessed 
+electronically. Databases are essential for storing information in a way that can be efficiently modified, 
+or analyzed to support various tasks and applications.
+
+2 types of database are : 
+
+1. Relational : this database is based on SQL, and developed by oracle.
+2. Non relational: this database is based on java - MangoDB.
+
+Databases store information in a structured format, mostly in tables. Each table holds data related to a particular aspect, 
+like customers, orders, or products, in a business database.
+
+It is a structured environment that allows efficient data handling and supports various applications across different industries.
+
+
+
+
+q2. What is normaliation?
+
+Ans.  Normalization is a process for organizing the data in database. 
+It involves dividing a database into multiple related tables and defining relationships between them, which helps in making the 
+data more efficient, consistent, and easy to maintain.
+
+there are 3 anomlies :
+
+1, insertion anomly : to avoid same data in one table. ( time consuming and take more memory to store.)
+2. update anomly : each and every time write query to update.
+3. delete anomly : if we remove one record of database then we may lose all the other information. 
+
+Normalization is achieved through a series of stages called normal forms (NFs) :
+
+1. First Normal Form (1NF) - contain 1 value in field.
+2. Second Normal Form (2NF) - should be in 1nf and remove partial dependency.
+3. Third Normal Form (3NF) - should be in 2nf, divided in 2 tables, remove transit partial dependency.
+4. Boyce-Codd Normal Form (BCNF) - is advance version of 3nf. it is stricter than 3nf. should be in 3nf and for every functional 
+dependency, LHS is super key.  ( functional dependency is where all the fields are depend only on primary key)
+
+
+
+
+
+q3. What is difference between DBMS and RDBMS?
+
+Ans.
+
+Aspect		DBMS					RDBMS
+Structure		Non-relational				Relational (table format)
+Data Relationships	Not enforced				Enforced with keys
+Data Integrity	Basic or limited (may not fully ACID-compilant)	Strong, ACID-compliant
+SQL Support	Optional					Extensive
+Scalability	Vertical					Horizontal and vertical
+Examples		XML databases, MS Access			MySQL, Oracle, PostgreSQL 
+
+
+
+
+
+q4. what is EF code rule of RDMS systems?
+
+Ans. E.F. Codd, a pioneer of relational database theory, proposed 13 rules (known as Codd's 12 rules plus Rule 0) to define 
+what an ideal Relational Database Management System (RDBMS) should be.
+
+Rule 0: Foundation Rule - system must use relational principles entirety and not rely on other data models.
+
+Rule 1: The Information Rule - The database should only use tables to represent data, all information should be stored in a table format, with rows and columns.
+
+Rule 2: Guaranteed Access Rule - data can be uniquely accessed and updated using different keys like primary key, foreign key, etc.
+
+Rule 3: Systematic Treatment of NULL Values - The system must allow NULL values to represent missing or inapplicable data.
+
+Rule 4: Dynamic Online Catalog Based on the Relational Model - users can query the catalog (metadata) as they would any other table in the database.
+
+Rule 5: Comprehensive Data Sub-Language Rule - support at least one comprehensive language that can be used for data management by using create,insert,update,delete,drop.
+
+Rule 6: View Updating Rule - All views that are theoretically updatable should be updatable through the system.
+
+Rule 7: High-Level Insert, Update, and Delete - Multiple records in rows shoul be allowed to enter at once.
+
+Rule 8: Physical Data Independence - Changes to the physical storage of data should not affect how the data is accessed by applications.
+
+Rule 9: Logical Data Independence - applications remain unaffected when the schema is updated.
+
+Rule 10: Integrity Independence - PRIMARY KEY and FOREIGN KEY constraints, are part of the database schema and can be modified independently of application logic.
+
+Rule 11: Distribution Independence - Users should not be aware of whether data is centralized or spread across different physical locations.
+
+Rule 12: Non-Subversion Rule - any operations performed at a low level should still be governed by the same rules that apply at a high level, maintaining data integrity.
+
+
+
+
+
+q5. What do you understand by data redundency ?
+
+Ans. Data redundancy occurs when the same piece of data is stored in multiple places within a database or data storage system.
+Data redundancy is the unnecessary repetition of data, which can lead to storage and data integrity issues. Proper database design 
+and normalization help minimize redundancy and maintain a more reliable, efficient database system.
+
+Consistent Data: Ensures that updates are made in one place, reducing the chance of inconsistencies.
+
+Efficient Storage: Lowers storage requirements by eliminating duplicate data.
+
+Simplified Maintenance: Reduces the risk of anomalies, making database maintenance and updates easier and more reliable.
+
+
+
+
+
+q6. What is DDL interpreter?
+
+Ans. A DDL (Data Definition Language) interpreter is a component of a database management system (DBMS), responsible for interpreting 
+and executing DDL commands. 
+DDL commands are used to define or modify the structure of database objects such as table field-rows-column, indexes, schemas, and views.
+
+The commands used in DDL are :
+Create, Drop, Alter, Truncate.
+
+This commands handle the operatios to modify database tables and The DDL interpreter enforces any constraints specified in the DDL command
+(such as NOT NULL, PRIMARY KEY, and FOREIGN KEY).
+
+
+
+
+
+q7. What is DML compiler in SQL ?
+
+Ans. A DML (Data Manipulation Language) compiler in SQL is a component of a database management system (DBMS) responsible for interpreting 
+and executing DML commands.
+
+DML compiler commands are :
+INSERT, UPDATE, DELETE, SELECT
+
+These commands handles the different operation that neends to be done in table created. 
+
+The DML compiler processes and optimizes SQL data manipulation commands, ensuring that they execute efficiently while maintaining data integrity 
+and consistency in the database.
+
+
+
+
+
+q8.What is SQL key constraints writing an example of SQL key constraints.
+
+Ans. SQL key constraints are rules applied to columns in a database table for uniqueness in data and relationships within the data. 
+These constraints are crucial for maintaining data consistency and reliability in relational databases.
+
+Types of Key Constraints : 
+PRIMARY KEY: Uniquely identifies each record in a table. Only one primary key constraint can be applied per table, and it does not allow NULL values.
+FOREIGN KEY: make a link between two tables by referencing the primary key of another table, establishing a relationship between the records.
+UNIQUE KEY: check that all values in a column or set of columns are unique across all records in the table, but it can allow one NULL value if the column is nullable.
+CHECK: Specifies a condition that each record must satisfy to be inserted or updated in the table.
+NOT NULL: Ensures that a column cannot have a NULL value, meaning every record must have a value for that column.
+
+Example for key constraints PRIMARY KEY and FOREIGN KEY :
+
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(50)
+);
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+
+Example for key constraint NOT NULL : 
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    DepartmentID INT
+);
+
+
+
+
+
+q9. what is savepoint and how to create a save point write a query?
+
+Ans. In SQL databases, a savepoint is a marker within a transaction that allows the user to roll back part of a transaction instead of rolling back the entire transaction. 
+This is useful in complex transactions where you want to undo specific changes but keep others. 
+
+Three steps for data saving process are :
+Commit : save the data , didnot change the data.
+Rollback : It goes back at the old data.
+Save point  : save queries and also wroks as check point.
+
+Savepoint is used when we have to insert temporary data.
+after savepoint if we use commit data then it will be permanantly saved and cannot removed.
+rollback restores the old table and removes temporary value.
+
+example of writing a query : 
+
+BEGIN TRANSACTION;
+
+INSERT INTO customers (customer_id, name) VALUES (1, 'John Doe');
+
+-- Create a savepoint
+SAVEPOINT before_order_insert;
+
+INSERT INTO orders (order_id, customer_id, order_date) VALUES (101, 1, '2024-11-06');
+
+-- ROLLBACK to the savepoint instead of the entire transaction if something goes wrong
+
+-- Rollback to the savepoint
+ROLLBACK TO SAVEPOINT before_order_insert;
+
+-- Commit the transaction (if everything is correct)
+COMMIT;
+
+
+
+
+
+q10. What is trigger and how to create a trigger in SQL?
+
+Ans. A trigger is a stored procedure in a database that automatically invokes whenever a special event in the database occurs.
+
+ For example, a trigger can be invoked when a row is inserted into a specified table or when specific table columns are updated.
+
+syntex to create trigger : 
+
+create trigger [trigger_name]   (give a name to trigger)
+[before | after]   		(specify use before or after)
+{insert | update | delete}  	(use process of insert, update, or delete).
+on [table_name]  		(give name of table created before)
+[for each row]  		(for each row of table)
+[trigger_body] 		(write body part includes condition,etc.)
