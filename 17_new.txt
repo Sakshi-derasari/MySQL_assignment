@@ -1,0 +1,94 @@
+1.What are control structures in PL/SQL? Explain the IF-THEN and LOOP control structures
+
+In PL/SQL, control structures are used to control the flow of execution within a PL/SQL block based on conditions or repetitive logic. These structures enable you to make decisions, iterate over a set of instructions, or control the sequence of operations within a program.
+
+There are two main types of control structures in PL/SQL:
+
+Conditional Control Structures (e.g., IF-THEN, CASE)
+Iterative Control Structures (e.g., LOOP, FOR LOOP, WHILE LOOP)
+
+1. IF-THEN Control Structure
+
+IF <condition> THEN
+    -- Statements to be executed if condition is true
+END IF;
+
+DECLARE
+    v_salary NUMBER := 5000;
+BEGIN
+    IF v_salary > 4000 THEN
+        DBMS_OUTPUT.PUT_LINE('Salary is above threshold');
+    END IF;
+END;
+/
+
+
+2. LOOP Control Structure
+LOOP
+    -- Statements to be executed
+END LOOP;
+
+DECLARE
+    v_counter NUMBER := 1;
+BEGIN
+    LOOP
+        EXIT WHEN v_counter > 5;  -- Exit condition
+        DBMS_OUTPUT.PUT_LINE('Counter: ' || v_counter);
+        v_counter := v_counter + 1;  -- Increment counter
+    END LOOP;
+END;
+/
+
+2. How do control structures in PL/SQL help in writing complex queries?
+
+Control structures in PL/SQL are essential for writing complex queries and creating sophisticated logic inside PL/SQL blocks. While SQL itself is declarative and used for querying data from the database, PL/SQL (Procedural Language/SQL) extends SQL by allowing for procedural constructs, such as loops, conditionals, and exceptions. These control structures help in:
+
+Making decisions based on query results (e.g., using IF-THEN to execute different logic depending on the data).
+Iterating over sets of data (e.g., using loops to process multiple records returned by a query).
+Handling errors and exceptions that might occur during query execution.
+Optimizing complex queries by breaking them into smaller, manageable parts and controlling the flow based on conditions.
+
+
+Here's a deeper look at how control structures specifically help in writing and managing complex queries in PL/SQL:
+1. Conditionally Controlling the Flow of Queries (Using IF-THEN)
+Control structures like IF-THEN allow you to execute different SQL queries based on conditions, which can simplify complex logic and enhance readability. For example, you can check the result of a query and decide whether to execute another query or process the data in a specific way.
+
+Example:
+Imagine you want to check whether a particular product exists in the database, and if it does, you fetch its details; otherwise, you display an error message.
+
+
+DECLARE
+    v_product_id NUMBER := 101;
+    v_product_name VARCHAR2(100);
+BEGIN
+    -- Check if the product exists
+    SELECT product_name INTO v_product_name
+    FROM products
+    WHERE product_id = v_product_id;
+    
+    -- If product exists, display its name, otherwise handle error
+    IF v_product_name IS NOT NULL THEN
+        DBMS_OUTPUT.PUT_LINE('Product Name: ' || v_product_name);
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Product not found');
+    END IF;
+END;
+/
+In this case, the IF-THEN structure allows you to write conditional logic to control which query to execute based on the result of a lookup.
+
+2. Iterating Over Query Results (Using LOOP and CURSOR)
+When dealing with multiple rows of data, control structures like loops allow you to iterate through each row and process it. You can fetch query results into a cursor and then use loops to process each row individually.
+
+Example: Using a FOR loop to process each row from a query:
+
+DECLARE
+    CURSOR c_employees IS
+        SELECT employee_id, employee_name FROM employees;
+BEGIN
+    FOR employee_record IN c_employees LOOP
+        -- Process each employee
+        DBMS_OUTPUT.PUT_LINE('Employee ID: ' || employee_record.employee_id || ' - ' || employee_record.employee_name);
+    END LOOP;
+END;
+/
+In this example, the FOR loop iterates over all employees fetched by the cursor and processes each employee one by one. This is useful for complex operations, such as updating records, performing calculations, or handling business logic for each row.

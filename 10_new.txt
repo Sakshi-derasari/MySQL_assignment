@@ -1,0 +1,75 @@
+1. What is the purpose of the COMMIT and ROLLBACK commands in SQL?
+
+The COMMIT and ROLLBACK commands in SQL are used to manage transactions, ensuring data integrity and consistency within a database.
+
+COMMIT:
+
+The COMMIT command is used to save all the changes made during the current transaction to the database permanently.
+Once a COMMIT is issued, the changes (inserts, updates, deletes) are finalized and visible to other users.
+A COMMIT ensures that the database remains in a consistent state and that all operations within the transaction are successfully completed.
+Example:
+
+BEGIN TRANSACTION;
+UPDATE employees SET salary = 6000 WHERE id = 1;
+COMMIT;
+
+ROLLBACK:
+
+The ROLLBACK command is used to undo all changes made during the current transaction.
+It reverts the database to the state it was in before the transaction started.
+ROLLBACK is often used when an error occurs or when the changes made during a transaction are not desirable.
+Example:
+
+BEGIN TRANSACTION;
+UPDATE employees SET salary = 6000 WHERE id = 1;
+ROLLBACK;
+
+
+2. Explain how transactions are managed in SQL databases.
+
+Transactions in SQL databases are used to group a series of SQL operations into a single logical unit of work, ensuring data integrity and consistency.
+A transaction allows a set of operations to be executed together as a whole, where either all changes are applied or none at all, depending on the outcome.
+Here's how transactions are managed in SQL databases:
+
+Key Concepts of Transactions:
+Atomicity:
+
+A transaction is atomic, meaning it is indivisible. The entire set of operations within a transaction is treated as a single unit. If one operation fails, the entire transaction fails, and the database is rolled back to its previous state.
+Consistency:
+
+A transaction takes the database from one consistent state to another. This ensures that the database rules (such as constraints, triggers, and business logic) are always upheld after the transaction is completed.
+Isolation:
+
+The changes made by a transaction are not visible to other transactions until the transaction is committed. This prevents concurrent transactions from interfering with each other, maintaining data integrity. Different isolation levels (e.g., Read Uncommitted, Read Committed, Repeatable Read, Serializable) control how isolated the transactions are from one another.
+Durability:
+
+Once a transaction is committed, its changes are permanent and will survive any subsequent system failures. This ensures that committed data is safely stored and not lost, even if the database crashes.
+Managing Transactions in SQL:
+Transactions are typically managed using the following commands:
+
+BEGIN TRANSACTION (or START TRANSACTION):
+
+This command starts a new transaction. It marks the point at which the database begins tracking all changes made during the transaction.
+In many databases, a transaction begins automatically when you execute a statement (called autocommit mode), but you can explicitly begin a transaction to control its boundaries.
+Example:
+
+BEGIN TRANSACTION;
+COMMIT:
+
+Example:
+
+COMMIT;
+ROLLBACK:
+
+The ROLLBACK command is used to undo all changes made during the transaction. It reverts the database to its state before the transaction began, effectively discarding all operations performed during the transaction.
+A rollback is typically used when an error occurs, or when you determine that you need to cancel the transaction due to some condition.
+Example:
+
+ROLLBACK;
+Transaction States:
+A transaction can be in one of the following states during its lifecycle:
+
+Active: The transaction is ongoing, and the changes made by it are not yet committed or rolled back.
+Committed: The transaction has been successfully completed, and all changes are now permanent.
+Rolled Back: The transaction has failed or been aborted, and all changes have been undone.
+Failed: An error has occurred during the transaction, and it is in a state where it needs to be either rolled back or committed after recovery.

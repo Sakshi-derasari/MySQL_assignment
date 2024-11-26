@@ -1,0 +1,81 @@
+1. What is the purpose of GRANT and REVOKE in SQL?
+
+In SQL, the GRANT and REVOKE commands are used to manage permissions (or privileges) for users or roles on database objects such as tables, 
+views, or procedures. These commands help control access to data and operations in the database.
+
+1. GRANT
+The GRANT command is used to give specific permissions to users or roles. It allows a user or role to perform actions on a database object. These permissions can include the ability to SELECT, INSERT, UPDATE, DELETE, or other database actions, depending on the database system.
+
+Syntax:
+
+GRANT privilege_type ON object TO user;
+privilege_type: The type of permission (e.g., SELECT, INSERT, UPDATE, DELETE, etc.).
+object: The database object you are granting access to (e.g., a table or view).
+user: The user or role receiving the privilege.
+Example:
+
+GRANT SELECT, INSERT ON employees TO john;
+This gives the user john the ability to SELECT (read) and INSERT (write) data on the employees table.
+
+You can also grant all privileges on a table:
+
+
+GRANT ALL PRIVILEGES ON employees TO john;
+
+2. REVOKE
+The REVOKE command is used to remove or withdraw previously granted privileges. It effectively reverses the effects of the GRANT command.
+
+Syntax:
+
+REVOKE privilege_type ON object FROM user;
+privilege_type: The type of permission you want to revoke.
+object: The database object (table, view, etc.) from which the permission is being revoked.
+user: The user or role whose privilege you are removing.
+Example:
+
+REVOKE SELECT ON employees FROM john;
+This removes the SELECT permission on the employees table from the user john, meaning they can no longer read data from that table.
+
+You can also revoke all privileges:
+REVOKE ALL PRIVILEGES ON employees FROM john;
+
+
+
+2. How do you manage privileges using these commands?
+
+To manage privileges in SQL using the GRANT and REVOKE commands, you need to:
+
+1. Grant Privileges (Using GRANT)
+You use the GRANT command to assign specific permissions to users or roles. Privileges define what a user can do with a database object, like reading data, modifying it, or performing administrative tasks.
+
+Example: Granting Specific Privileges
+Grant SELECT and INSERT on a table:
+
+GRANT SELECT, INSERT ON employees TO john;
+Grant ALL privileges on a table (providing full access):
+
+GRANT ALL PRIVILEGES ON employees TO john;
+Grant with the WITH GRANT OPTION: Allows the user to pass on their privileges to other users.
+privileges.
+
+2. Revoke Privileges (Using REVOKE)
+The REVOKE command removes privileges previously granted to users or roles. This is useful when you need to restrict or change access.
+
+Example: Revoking Specific Privileges
+Revoke SELECT privilege from a user:
+
+
+REVOKE SELECT ON employees FROM john;
+Revoke ALL privileges from a user:
+
+
+REVOKE ALL PRIVILEGES ON employees FROM john;
+Revoke Privileges from Roles
+If a role is assigned privileges and a user has that role, you can revoke the privileges from the role:
+
+3. Viewing Privileges
+To check what privileges a user or role has, you can query the database's system tables (this varies by DBMS). For example:
+
+In MySQL, you can use:
+
+SHOW GRANTS FOR 'john';

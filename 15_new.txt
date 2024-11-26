@@ -1,0 +1,57 @@
+1. What is a trigger in SQL? Describe its types and when they are used
+
+A trigger in SQL is a set of instructions or code that is automatically executed (or "fired") in response to specific events on a particular table or view. Triggers are commonly used to enforce data integrity, auditing, and business rules in a database. They are typically used to respond to events like data modifications (INSERT, UPDATE, DELETE).
+
+Types of Triggers in SQL
+Triggers can be classified based on:
+
+Event Type: The type of operation that activates the trigger.
+
+INSERT Trigger: Fires when a new row is inserted into a table.
+UPDATE Trigger: Fires when an existing row in a table is updated.
+DELETE Trigger: Fires when a row is deleted from a table.
+Trigger Timing: The timing defines when the trigger will fire relative to the event.
+
+BEFORE Trigger: Executes before the data modification (INSERT, UPDATE, DELETE) is performed. This allows for validation or modification of the data before it is committed to the table.
+AFTER Trigger: Executes after the data modification is performed. This is typically used for auditing, logging, or cascading actions like updating related tables.
+INSTEAD OF Trigger: A special type of trigger used primarily for views. It executes in place of the data modification, often used to perform custom actions (such as complex transformations) instead of the default insert, update, or delete behavior.
+
+CREATE TRIGGER trigger_name
+    BEFORE/AFTER/INSTEAD OF INSERT/UPDATE/DELETE
+    ON table_name
+    FOR EACH ROW
+    BEGIN
+        -- Trigger logic here
+    END;
+
+1.Enforcing Data Integrity:
+Triggers can ensure that certain business rules are followed before or after data modifications. For example, checking if a value falls within a specified range before an insert or update occurs.
+Example: Before inserting an order, a BEFORE INSERT trigger could check if the customer exists in the customer table.
+
+2.Auditing and Logging:
+Triggers can be used to automatically track changes to a table by inserting records into an audit table whenever data is inserted, updated, or deleted.
+Example: An AFTER UPDATE trigger could insert the old and new values into an audit table every time a record is modified.
+
+3.Cascading Actions:
+Triggers can perform additional actions such as updating related rows in other tables, ensuring referential integrity or cascading deletions when a parent record is deleted.
+Example: An AFTER DELETE trigger could delete related records in child tables when a parent record is deleted (similar to a foreign key with ON DELETE CASCADE).
+
+4.Preventing Invalid Operations:
+A BEFORE INSERT or BEFORE UPDATE trigger can be used to validate data before it is saved to the database, preventing invalid or inconsistent data.
+
+
+2. Explain the difference between INSERT, UPDATE, and DELETE triggers.
+
+Aspect  	               INSERT Trigger	            UPDATE Trigger	      DELETE Trigger
+Fired When            A new row is inserted               An existing row is                   A row is deleted from the
+                                   into the table.	                modified (updated).	     table.
+
+Purpose	-             Validate or transform 	        Audit changes between           Track deletions or     
+                                  data before insertion.              old and new data.                    enforce cascading deletes.
+
+Timing Options     BEFORE INSERT, 	        AFTER UPDATE,	      BEFORE DELETE, 
+                                  AFTER INSERT                        BEFORE UPDATE                      AFTER DELETE                    
+
+Access to Data    NEW keyword for accessing  NEW for new values, OLD for   OLD keyword for accessing 
+                                  the newly inserted row.            old values (before update).       the deleted row.
+                    

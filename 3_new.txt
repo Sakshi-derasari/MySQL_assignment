@@ -1,0 +1,85 @@
+1. What are constraints in SQL? List and explain the different types of constraints
+SQL constraints are used to specify rules for the data in a table.
+
+Constraints are used to limit the type of data that can go into a table. This ensures the accuracy and reliability of the data in the table. If there is any violation between the constraint and the data action, the action is aborted.
+SQL constraints are used to specify rules for the data in a table.
+
+NOT NULL - Ensures that a column cannot have a NULL value
+UNIQUE - Ensures that all values in a column are different
+PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+FOREIGN KEY - Prevents actions that would destroy links between tables
+CHECK - Ensures that the values in a column satisfies a specific condition
+DEFAULT - Sets a default value for a column if no value is specified
+CREATE INDEX - Used to create and retrieve data from the database very quickly
+
+
+2. How do PRIMARY KEY and FOREIGN KEY constraints differ?
+
+The PRIMARY KEY and FOREIGN KEY constraints are both used to maintain data integrity in relational databases, but they serve different purposes and have distinct characteristics. Here's a detailed comparison:
+
+1. PRIMARY KEY
+Purpose: A PRIMARY KEY is used to uniquely identify each record in a table. It ensures that each row in the table is unique and not duplicated.
+
+Characteristics:
+
+A PRIMARY KEY column must contain unique values (no duplicates).
+A PRIMARY KEY column cannot contain NULL values; every row must have a value in the primary key column(s).
+A table can have only one PRIMARY KEY, but the primary key can consist of one or more columns (this is called a composite primary key).
+Typically, a primary key is created on the column that uniquely identifies the record, like an ID field.
+Example:
+
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(100)
+);
+In this example, the student_id column is the primary key, meaning each student_id must be unique and not NULL.
+
+2. FOREIGN KEY
+Purpose: A FOREIGN KEY is used to establish and enforce a link between the data in two tables. It ensures referential integrity, meaning that the values in a foreign key column must match values in a primary key or a unique column in another table.
+
+Characteristics:
+
+A FOREIGN KEY column may contain duplicate values (it does not need to be unique).
+A FOREIGN KEY column can contain NULL values, representing the absence of a relationship (depending on whether the relationship allows NULL).
+A table can have multiple FOREIGN KEY constraints that reference different primary keys (or unique keys) from other tables.
+A foreign key enforces a relationship between tables by pointing to a primary key in another table, ensuring that the relationship between records is valid.
+
+
+3. What is the role of NOT NULL and UNIQUE constraints?
+
+The NOT NULL and UNIQUE constraints are both used in SQL to enforce data integrity, but they serve different purposes. Here's an explanation of each:
+
+1. NOT NULL Constraint
+Role: The NOT NULL constraint ensures that a column cannot have a NULL value. In other words, it forces the user to provide a valid (non-null) value when inserting or updating a record in the table.
+
+Purpose: It is used when a column's data is required for every record, meaning it cannot be left empty. This constraint is often applied to fields that are critical to the business logic or operations, such as names, dates, or IDs.
+
+Example:
+
+CREATE TABLE students (
+    student_id INT NOT NULL,
+    student_name VARCHAR(100) NOT NULL,
+    age INT
+);
+In this example:
+
+The student_id and student_name columns are defined with the NOT NULL constraint, meaning each student must have a student_id and student_name value. The age column does not have this constraint, so it can be left NULL.
+2. UNIQUE Constraint
+Role: The UNIQUE constraint ensures that all the values in a column (or a combination of columns) are unique across the entire table. No two rows can have the same value for that column (or group of columns if the UNIQUE constraint is defined on multiple columns).
+
+Purpose: It is used to enforce uniqueness in a column where duplicates are not allowed, such as email addresses, phone numbers, or user IDs. The UNIQUE constraint helps to prevent the insertion of duplicate data in a column.
+
+Example:
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(100),
+    email VARCHAR(100) UNIQUE
+);
+
+In this example:
+
+The student_id column is the PRIMARY KEY, ensuring each student has a unique ID.
+The email column has a UNIQUE constraint, ensuring no two students can have the same
+email address in the table.

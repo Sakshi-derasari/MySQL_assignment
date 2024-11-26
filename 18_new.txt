@@ -1,0 +1,37 @@
+
+1. What is a cursor in PL/SQL? Explain the difference between implicit and explicit cursors
+
+In PL/SQL (Procedural Language/Structured Query Language), a cursor is a pointer to a context area (memory location) where SQL query results are stored. It allows you to fetch and process rows from a query result one by one, rather than handling all the rows at once. Cursors are essential when dealing with queries that return multiple rows of data, and they enable row-by-row processing in a controlled manner.
+
+There are two main types of cursors in PL/SQL:
+
+Implicit Cursors
+Explicit Cursors
+
+1. Implicit Cursors
+An implicit cursor is automatically created by Oracle when a SQL query is executed. PL/SQL does not require the programmer to explicitly define or open an implicit cursor; Oracle handles it internally for SELECT INTO queries or DML (Data Manipulation Language) operations (INSERT, UPDATE, DELETE).
+
+Characteristics of Implicit Cursors:
+
+Automatic Handling: Oracle automatically opens, fetches, and closes the cursor.
+Used for Single Row Operations: Implicit cursors are used for operations that affect a single row of data, like SELECT INTO, or for DML statements (INSERT, UPDATE, DELETE) that return a single result.
+No Programmer Control: The programmer cannot directly manipulate or control an implicit cursor.
+
+2. Explicit Cursors
+An explicit cursor is a cursor that the programmer defines explicitly in the PL/SQL code. It gives more control over fetching rows, handling multiple rows, and managing the cursor lifecycle (open, fetch, close).
+
+Characteristics of Explicit Cursors:
+
+User Defined: The programmer explicitly declares the cursor and provides a SQL query.
+Used for Multi-row Queries: Explicit cursors are typically used when a SQL query returns multiple rows, and the program needs to fetch and process each row individually.
+More Control: The programmer can explicitly control the opening, fetching, and closing of the cursor, as well as handle the rows in a loop.
+
+
+
+2. When would you use an explicit cursor over an implicit one?
+
+An explicit cursor is used when you need more control over the cursor's behavior, such as when you want to:
+Fetch multiple rows or perform complex operations: Explicit cursors are ideal when working with a result set that requires multiple fetches or when you need to perform additional logic (such as conditional fetching, updating, or processing) as you iterate through the rows.
+Use OPEN, FETCH, and CLOSE explicitly: Explicit cursors allow for better control of the cursor's lifecycle. You can explicitly open, fetch rows, and close the cursor, which is useful when you need fine-grained control over resource management, especially when dealing with large result sets.
+Handle errors and exceptions: With explicit cursors, you can handle errors and exceptions more effectively within the cursor operations. You can explicitly manage exceptions for fetching rows or closing the cursor.
+Return specific results: Explicit cursors can be used to return specific data from a query, especially when you need to fetch a subset of rows from a larger result set, and you want to manually control the iteration over the rows.

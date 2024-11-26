@@ -1,0 +1,60 @@
+1. Define the SQL Data Definition Language (DDL).
+
+In SQL, Data Definition Language (DDL) refers to a set of commands used to create, modify, and delete 
+the structure of database objects like tables, views, indexes, and constraints, essentially defining the 
+schema of a database, rather than manipulating the data itself; key DDL commands include "CREATE", "ALTER", and "DROP" 
+which allow users to build and change the database layout.
+
+
+2. Explain the CREATE command and its syntax.
+
+CREATE Command in SQL
+The CREATE command in SQL is a Data Definition Language (DDL) command used to create new database objects such as tables, views, indexes, schemas, and databases themselves. It defines the structure and properties of these objects within the database. The CREATE command allows you to specify the types of data that can be stored, how it is stored, and the relationships between data entities.
+
+Syntax of the CREATE Command
+1. CREATE DATABASE (To create a new database)
+
+CREATE DATABASE database_name;
+database_name: The name of the database you want to create.
+
+2. CREATE TABLE (To create a new table)
+
+The most commonly used CREATE statement is for creating tables, which define how data will be organized in rows and columns.
+
+CREATE TABLE table_name (
+    column1 datatype [constraint],
+    column2 datatype [constraint],
+    ...
+);
+
+table_name: The name of the table.
+column1, column2, ...: The names of the columns in the table.
+datatype: The data type for each column (e.g., INT, VARCHAR, DATE, etc.).
+constraint: Optional constraints that can be applied to columns (e.g., PRIMARY KEY, NOT NULL, UNIQUE, etc.).
+
+
+
+3. What is the purpose of specifying data types and constraints during table creation?
+
+Specifying data types and constraints when creating a table ensures that the data in the table is accurate, reliable, and consistent.
+
+1. Purpose of Specifying Data Types
+A data type defines the kind of data a column can hold. By specifying data types during table creation, you ensure that the data stored in each column is appropriate, consistent, and optimized for storage and retrieval. Here are the key purposes of data types:
+
+a) Data Integrity
+Data Types enforce correctness by restricting the type of data that can be inserted into a column. For example, you can define a column to store only integer values, floating-point numbers, or text.
+Example: If you define a column as INT, it will only accept integer values and reject any text or non-numeric data.
+
+b) Data Storage Efficiency
+Different data types require different amounts of storage. By choosing the appropriate data type, you ensure efficient use of storage space. For example, using INT (4 bytes) instead of VARCHAR(255) (which could use more space) for a column that only stores small integers.
+Example:
+
+2. Purpose of Specifying Constraints
+Constraints are used to define rules for the data in a table. Constraints help ensure that the data is accurate, consistent, and adheres to the business logic of the application. Here's why constraints are essential:
+
+a) Enforcing Data Integrity
+Constraints ensure that the data in the database meets certain conditions, preventing incorrect or inconsistent data from being inserted.
+
+b) Ensuring Referential Integrity (Relationships between Tables)
+Foreign Key constraints ensure that relationships between tables are valid. They enforce the rule that a record in one table must correspond to a valid record in another table.
+For example, in a students table, you can have a teacher_id column that references the teacher_id in the teachers table. This ensures that each student is linked to a valid teacher.

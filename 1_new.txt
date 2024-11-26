@@ -1,0 +1,68 @@
+1.Introduction to SQL
+
+1. What is SQL, and why is it essential in database management?
+
+SQL, which stands for Structured Query Language, is a standardized 
+programming language used to interact with relational databases, 
+allowing users to store, retrieve, manipulate, and manage data within them;
+making it a crucial tool in database management as it provides a way to 
+communicate with databases and perform operations like creating, updating, 
+and deleting data across various systems and applications.
+
+
+2. What is Difference between DBMS and RDBMS?
+
+Storage: DBMS stores data in files, while RDBMS stores it in tables. 
+Security: RDBMS is more secure than DBMS. 
+Speed: RDBMS is faster than DBMS. 
+Data handling: RDBMS can handle large amounts of data more efficiently and effectively than DBMS. 
+User support: DBMS supports single users, while RDBMS supports multiple users. 
+Client-server architecture: DBMS does not support client-server architecture, while RDBMS does. 
+Distributed databases: DBMS does not support distributed databases, while RDBMS does. 
+
+
+3. Describe the role of SQL in managing relational databases
+
+SQL (Structured Query Language) acts as the standard language used to interact with and manage
+ data within relational databases, allowing users to perform operations like retrieving, inserting, updating, 
+and deleting data from tables by executing specific commands, effectively providing a structured way to 
+access and manipulate information stored in a relational database system.
+
+
+ 4.What are the key features of Structured Query Language?
+
+Data Definition Language (DDL):
+ SQL provides a set of commands 
+to define and modify the structure of a database, including creating tables,
+ modifying table structure, and dropping tables.
+
+Data Manipulation Language (DML): 
+SQL provides a set of commands 
+to manipulate data within a database, including adding, modifying,
+ and deleting data.
+ 
+ Query Language: 
+ SQL provides a rich set of commands for querying
+  a database to retrieve data, including the ability to filter, sort,
+   group, and join data from multiple tables.
+
+Transaction Control:
+ SQL supports transaction processing,
+ which allows users to group a set of database operations into a
+  single transaction that can be rolled back in case of failure.
+
+  Data Integrity: 
+  SQL includes features to enforce data integrity,
+   such as the ability to specify constraints on the values that
+    can be inserted or updated in a table, and to enforce referential
+     integrity between tables.
+
+    User Access Control:
+     SQL provides mechanisms to control user access
+     to a database, including the ability to grant and revoke privileges to
+   perform certain operations on the database.
+
+Portability: 
+SQL is a standardized language, meaning that SQL code
+ written for one database management system can be used on another
+  system with minimal modification.

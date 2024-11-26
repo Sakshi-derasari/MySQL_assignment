@@ -1,0 +1,47 @@
+1. What is the function of the DROP command in SQL?
+
+The DROP command in SQL removes objects from a database, such as a table, view, index, or database. It's used to permanently delete objects from the database, so it's important to back up the object before using the command. Common Uses of the DROP Command:
+
+Drop a Table: To delete an entire table and all of its data from the database, use:
+
+DROP TABLE table_name;
+
+Example:
+DROP TABLE courses;
+This removes the courses table, along with all its columns, data, and constraints, from the database.
+
+Drop a Database: To delete an entire database, use:
+DROP DATABASE database_name;
+
+Example:
+DROP DATABASE university_db;
+This removes the university_db database along with all its tables and other objects.
+
+Drop a View: To delete a view from the database, use:
+DROP VIEW view_name;
+
+Example:
+DROP VIEW student_view;
+This removes the view named student_view.
+
+
+2. What are the implications of dropping a table from a database?
+
+Dropping a table from a database permanently deletes all data stored within that table, including its structure, indexes, constraints, and 
+any triggers associated with it, making the data completely inaccessible and requiring the table to be recreated from scratch if needed again; 
+essentially, it removes the table definition from the database entirely, freeing up the storage space it occupied.
+
+Key implications of dropping a table:
+Data loss:
+All rows within the table are permanently deleted and cannot be recovered without backups. 
+Invalidated dependent objects:
+Any views, stored procedures, or other database objects that reference the dropped table become invalid and will need to be updated. 
+Removed constraints and triggers:
+All primary keys, foreign keys, unique constraints, and triggers defined on the table are also dropped. 
+Storage space reclaimed:
+The database reclaims the storage space previously used by the dropped table. 
+
+Example:
+If you have a table students, and you want to drop it, you would run:
+
+DROP TABLE students;

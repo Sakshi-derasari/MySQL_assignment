@@ -1,0 +1,42 @@
+1. What are the basic components of SQL syntax?
+
+The basic components of SQL syntax include: "SELECT" statement, "FROM" clause, "WHERE" clause, 
+"GROUP BY" clause, "ORDER BY" clause, "INSERT" statement, "UPDATE" statement, "DELETE" statement, 
+and various clauses like "JOIN" to manipulate data within tables; all categorized under Data Manipulation Language (DML), 
+Data Definition Language (DDL), and Data Control Language (DCL) depending on the operation being performed. 
+
+SELECT statement: Used to retrieve data from a database table, specifying which columns to select. 
+FROM clause: Specifies the table from which data is to be retrieved. 
+WHERE clause: Filters the results based on specific conditions. 
+GROUP BY clause: Used to aggregate data based on specific column values. 
+ORDER BY clause: Sorts the retrieved data in ascending or descending order. 
+INSERT statement: Adds new rows of data to a table. 
+UPDATE statement: Modifies existing data within a table. 
+DELETE statement: Removes rows from a table.
+
+
+2. Write the general structure of an SQL SELECT statement
+
+SELECT column1, column2, ... 
+FROM table_name 
+WHERE condition (optional); General Structure of a SQL SELECT Statement:
+
+SELECT: This keyword indicates that you want to retrieve data from a table.
+
+column1, column2, ...: This is a list of the specific columns you want to retrieve from the table. 
+You can select multiple columns by separating them with commas.
+
+FROM table_name: Specifies the table from which you want to retrieve data.
+
+WHERE condition (optional): This clause allows you to filter the results based on a specific condition.
+If you don't include a WHERE clause, all rows from the table will be returned.
+
+
+3. Explain the role of clauses in SQL statements.
+
+In SQL statements, clauses are individual components that define specific actions or conditions to be applied on data, 
+essentially acting as building blocks to construct a query and control how data is retrieved, manipulated, or filtered within a database, 
+allowing for precise control over the results based on the desired operation; each clause serves a unique purpose like selecting 
+specific columns, specifying tables to query from, or applying filters based on certain criteria. 
+
+SELECT name, age FROM employees WHERE age > 30 ORDER BY name ASC;

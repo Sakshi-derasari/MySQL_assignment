@@ -1,0 +1,81 @@
+1. What is the SELECT statement, and how is it used to query data?
+
+The SELECT statement is the most commonly used SQL (Structured Query Language) command to retrieve data from one or more tables in a database.
+ It allows you to specify which columns of data you want to retrieve, from which table(s), and under what conditions.
+
+Basic Syntax of the SELECT Statement
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+Key Components:
+SELECT: This keyword starts the query and is followed by the columns you want to retrieve. You can list specific columns or use * to select all columns.
+FROM: This keyword specifies the table from which you want to retrieve the data.
+WHERE (optional): This clause allows you to filter the rows based on a condition. Without WHERE, all rows from the table will be returned.
+ORDER BY (optional): You can use this to sort the results based on one or more columns.
+LIMIT (optional, in some databases): This clause limits the number of rows returned.
+
+
+
+2. Explain the use of the ORDER BY and WHERE clauses in SQL queries.
+
+In SQL, both the ORDER BY and WHERE clauses are used to refine and control the results of a query, but they serve different purposes. Here's an explanation of each clause and how they work:
+
+1. WHERE Clause
+The WHERE clause is used to filter rows based on specific conditions. It restricts the records returned by a query, ensuring that only the rows that meet the specified condition(s) are included in the result set.
+
+Syntax:
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+Key Points:
+The WHERE clause is placed after the FROM clause and before the ORDER BY clause (if used).
+It allows for conditions that can compare values using operators like =, <, >, <=, >=, <> (not equal), BETWEEN, LIKE, IN, etc.
+You can combine multiple conditions using AND, OR, and NOT to build complex filters.
+Examples:
+Simple Condition:
+To select students who have a grade of 'A':
+
+
+SELECT first_name, last_name, grade
+FROM students
+WHERE grade = 'A';
+Only rows where the grade column equals 'A' are returned.
+Multiple Conditions:
+To select students who have a grade of 'A' and are enrolled in the "Mathematics" department:
+
+
+SELECT first_name, last_name, grade, department
+FROM students
+WHERE grade = 'A' AND department = 'Mathematics';
+Both conditions must be true for a row to be included in the result.
+Using IN for Multiple Values:
+To select students who have grades of 'A' or 'B':
+
+
+SELECT first_name, last_name, grade
+FROM students
+WHERE grade IN ('A', 'B');
+This filters for rows where the grade is either 'A' or 'B'.
+Using LIKE for Pattern Matching:
+To select students whose name starts with "J":
+
+
+SELECT first_name, last_name
+FROM students
+WHERE first_name LIKE 'J%';
+The % wildcard represents any sequence of characters, so this will match any first_name that starts with "J".
+2. ORDER BY Clause
+The ORDER BY clause is used to sort the result set based on one or more columns. It controls the order in which the rows are displayed, either in ascending (ASC) or descending (DESC) order.
+
+Syntax:
+
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1 [ASC | DESC], column2 [ASC | DESC], ...;
+Key Points:
+The ORDER BY clause is placed after the WHERE clause (if present) and any other clauses like GROUP BY.
+By default, the ORDER BY clause sorts the results in ascending order (ASC). If you want the results in descending order, you use DESC.
+You can order by one or more columns, and if multiple columns are specified, the result will first be sorted by the first column, then by the second column, and so on.
